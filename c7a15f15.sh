@@ -2,7 +2,7 @@
 
 # disable selinux
 sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
-sudo setenforce 0
+setenforce 0
 
 # updates & installs
  yum update -y && yum groupinstall core base "Development Tools" -y && yum install mc -y
@@ -293,36 +293,35 @@ chown -R asterisk:asterisk /var/spool/mqueue
 service httpd restart
 #######################################
 
-#add-ons
+### add-ons ###
 #	+format_mp3
-#	+res_config_mysql
-#Applications
-#	+app_macro
-#Codec Translators
-#	+all
-#PBX Modules
-#	-pbx_ael
-#	-pbx_dundi
-#	-pbx_lua
-#	-pbx_realtime
-#Core Sound Packages
-#	+en&ru
-#Music On Hold File Packages
-#	+all
-#Extras Sound Packages
-#	all eng
-
 menuselect/menuselect --enable format_mp3 menuselect.makeopts
+#	+res_config_mysql
 menuselect/menuselect --enable res_config_mysql menuselect.makeopts
+
+### Applications ###
+#	+app_macro
 menuselect/menuselect --enable app_macro menuselect.makeopts
-menuselect/menuselect --disable pbx_ael menuselect.makeopts
-menuselect/menuselect --disable pbx_dundi menuselect.makeopts
-menuselect/menuselect --disable pbx_lua menuselect.makeopts
-menuselect/menuselect --disable pbx_realtime menuselect.makeopts
+
+### Codec Translators ###
+#	+all
 menuselect/menuselect --enable codec_silk menuselect.makeopts
 menuselect/menuselect --enable codec_siren7 menuselect.makeopts
 menuselect/menuselect --enable codec_siren14 menuselect.makeopts
 menuselect/menuselect --enable codec_g729a menuselect.makeopts
+
+### PBX Modules ###
+#	-pbx_ael
+menuselect/menuselect --disable pbx_ael menuselect.makeopts
+#	-pbx_dundi
+menuselect/menuselect --disable pbx_dundi menuselect.makeopts
+#	-pbx_lua
+menuselect/menuselect --disable pbx_lua menuselect.makeopts
+#	-pbx_realtime
+menuselect/menuselect --disable pbx_realtime menuselect.makeopts
+
+### Core Sound Packages ###
+#	+en&ru
 menuselect/menuselect --enable CORE-SOUNDS-EN-WAV menuselect.makeopts
 menuselect/menuselect --enable CORE-SOUNDS-EN-ULAW menuselect.makeopts
 menuselect/menuselect --enable CORE-SOUNDS-EN-ALAW menuselect.makeopts
@@ -341,6 +340,9 @@ menuselect/menuselect --enable CORE-SOUNDS-RU-G722 menuselect.makeopts
 menuselect/menuselect --enable CORE-SOUNDS-RU-SLN16 menuselect.makeopts
 menuselect/menuselect --enable CORE-SOUNDS-RU-SIREN7 menuselect.makeopts
 menuselect/menuselect --enable CORE-SOUNDS-RU-SIREN14 menuselect.makeopts
+
+### Music On Hold File Packages ###
+#	+all
 menuselect/menuselect --enable MOH-OPSOUND-WAV menuselect.makeopts
 menuselect/menuselect --enable MOH-OPSOUND-ULAW menuselect.makeopts
 menuselect/menuselect --enable MOH-OPSOUND-ALAW menuselect.makeopts
@@ -350,6 +352,9 @@ menuselect/menuselect --enable MOH-OPSOUND-G722 menuselect.makeopts
 menuselect/menuselect --enable MOH-OPSOUND-SLN16 menuselect.makeopts
 menuselect/menuselect --enable MOH-OPSOUND-SIREN7 menuselect.makeopts
 menuselect/menuselect --enable MOH-OPSOUND-SIREN14 menuselect.makeopts
+
+### Extras Sound Packages ###
+#	all eng
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-WAV menuselect.makeopts
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-ULAW menuselect.makeopts
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-ALAW menuselect.makeopts
@@ -359,4 +364,14 @@ menuselect/menuselect --enable EXTRA-SOUNDS-EN-G722 menuselect.makeopts
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-SLN16 menuselect.makeopts
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-SIREN7 menuselect.makeopts
 menuselect/menuselect --enable EXTRA-SOUNDS-EN-SIREN14 menuselect.makeopts
+
+
+
+
+
+
+
+
+
+
 
