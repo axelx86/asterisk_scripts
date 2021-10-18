@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# script in progress.....
+
 # disable selinux
 sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
 setenforce 0
