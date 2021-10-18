@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# script in progress...........
+
 ############### update system packages ###############
 yum update -y
 
